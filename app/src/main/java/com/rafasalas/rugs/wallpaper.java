@@ -33,6 +33,8 @@ public class wallpaper extends WallpaperService {
 
         private Handler handler;
 
+
+        private lienzo lienzotrabajo;
         //Variables acelerometro
 
         private wallpaperEngine() {
@@ -41,7 +43,7 @@ public class wallpaper extends WallpaperService {
 
             int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels;
             int height = getApplicationContext().getResources().getDisplayMetrics().heightPixels;
-
+            lienzotrabajo=new lienzo(context,width,height);
 
 
             handler = new Handler();
@@ -74,6 +76,8 @@ public class wallpaper extends WallpaperService {
                 int width=canvas.getWidth();
                 int height=canvas.getHeight();
                 //aqui su publicidad
+                lienzotrabajo.draw(canvas, width, height);
+
                 canvas.restore();
                 holder.unlockCanvasAndPost(canvas);
 
