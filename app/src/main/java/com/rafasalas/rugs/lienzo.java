@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 
 import com.rafasalas.rafalib.atractors.Atractor;
+import com.rafasalas.rafalib.composites.bezierBundle;
 import com.rafasalas.rafalib.composites.cloud;
 import com.rafasalas.rafalib.composites.sistema;
 
@@ -17,7 +18,8 @@ public class lienzo {
     Atractor hole, lateral1, lateral2, lateral3,lateral4;
     //Mandala mandy;
     PVector centro, part;
-    sistema sistem, sistem2;
+    //sistema sistem, sistem2;
+    bezierBundle sistem, sistem2;
     public float intensity;
 
 
@@ -26,10 +28,12 @@ public class lienzo {
         centro=new PVector(500, 500);
 
         intensity=-1;
-        sistem=new cloud(context, 75);
+        /*sistem=new cloud(context, 75);
         sistem.isboxed(width, height);
         sistem2=new cloud(context, 75);
-        sistem2.isboxed(width, height);
+        sistem2.isboxed(width, height);*/
+        sistem=new bezierBundle(width,height,6);
+        sistem2=new bezierBundle(width,height,6);
         hole=new Atractor(1);
         lateral1=new Atractor(1);
         lateral2=new Atractor(1);
@@ -54,7 +58,7 @@ public class lienzo {
 
         canvas.drawColor(0xFF000000);
 
-        sistem.acelera_particulas(hole);
+        /*sistem.acelera_particulas(hole);
         sistem2.acelera_particulas(hole);
         sistem.acelera_particulas(lateral1);
         sistem.acelera_particulas(lateral2);
@@ -63,7 +67,20 @@ public class lienzo {
         sistem.actualiza_particula();
         sistem.dibujaparticulas(canvas);
         sistem2.actualiza_particula();
-        sistem2.dibujaparticulas(canvas);
+        sistem2.dibujaparticulas(canvas);*/
+        sistem.acelerador(hole);
+        sistem2.acelerador(hole);
+        sistem.acelerador(lateral1);
+        sistem.acelerador(lateral2);
+        sistem2.acelerador(lateral3);
+        sistem2.acelerador(lateral4);
+        sistem.actualizar();
+        sistem.mostrar(canvas);
+
+        sistem2.actualizar();
+        sistem2.mostrar(canvas);
+
+
     }
 
 
