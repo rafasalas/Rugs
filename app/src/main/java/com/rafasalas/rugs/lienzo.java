@@ -22,11 +22,12 @@ public class lienzo {
     bezierBundle sistem, sistem2;
     public float intensity;
 
+    final global dataglobal;
 
     public lienzo(Context context, int width, int height){
         part=new PVector(10,-5);
         centro=new PVector(500, 500);
-
+        dataglobal = (global) context;
         intensity=-1;
         /*sistem=new cloud(context, 75);
         sistem.isboxed(width, height);
@@ -57,7 +58,11 @@ public class lienzo {
 
 
         canvas.drawColor(0xFF000000);
-
+        hole.sentido=-1-dataglobal.getIntensity();;
+        lateral1.sentido=-0.5f*dataglobal.getIntensity();
+        lateral2.sentido=-0.5f*dataglobal.getIntensity();
+        lateral3.sentido=-0.5f*dataglobal.getIntensity();
+        lateral4.sentido=-0.5f*dataglobal.getIntensity();
         /*sistem.acelera_particulas(hole);
         sistem2.acelera_particulas(hole);
         sistem.acelera_particulas(lateral1);
