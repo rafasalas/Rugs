@@ -33,9 +33,10 @@ public class bezierChain {
         Random rnd=new Random();
         //nodes=28;
         //radius_link=20;
-        nodes=10;
+        nodes=7;
         radius_link=200;
-        masainicial=(rnd.nextFloat()*30)+15;
+       masainicial=(rnd.nextFloat()*3)+1;
+        //masainicial=3;
         origen=new PVector(rnd.nextInt (width),rnd.nextInt (height));
         links=new ArrayList<Mat_point>();
         esbrowniano=true;
@@ -47,7 +48,7 @@ public class bezierChain {
            // if (i==0){velocidadinicial=new PVector (rnd.nextFloat ()*5,rnd.nextFloat ()*5);} else {velocidadinicial=new PVector (0,0);}
             velocidadinicial=new PVector ((rnd.nextFloat ()*5)+5,(rnd.nextFloat ()*5)+5);
             //masses[i]=masaparticula*((random(10,100))*0.01);
-            masses[i]=masainicial/((i+1));
+            masses[i]=masainicial*((i+1));
             r=rnd.nextInt(255);
             g=rnd.nextInt(255);
             b=rnd.nextInt(255);

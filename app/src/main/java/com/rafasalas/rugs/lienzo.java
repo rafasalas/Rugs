@@ -20,6 +20,9 @@ public class lienzo {
     PVector centro, part;
     //sistema sistem, sistem2;
     bezierBundle sistem, sistem2;
+
+    bezierBundle sistem3, sistem4;
+
     public float intensity;
 
     final global dataglobal;
@@ -35,6 +38,10 @@ public class lienzo {
         sistem2.isboxed(width, height);*/
         sistem=new bezierBundle(width,height,6);
         sistem2=new bezierBundle(width,height,6);
+        sistem3=new bezierBundle(width,height,6);
+        sistem4=new bezierBundle(width,height,6);
+
+
         hole=new Atractor(1);
         lateral1=new Atractor(1);
         lateral2=new Atractor(1);
@@ -75,15 +82,30 @@ public class lienzo {
         sistem2.dibujaparticulas(canvas);*/
         sistem.acelerador(hole);
         sistem2.acelerador(hole);
+
+        sistem3.acelerador(hole);
+        sistem4.acelerador(hole);
+
         sistem.acelerador(lateral1);
         sistem.acelerador(lateral2);
         sistem2.acelerador(lateral3);
         sistem2.acelerador(lateral4);
+
+        sistem3.acelerador(lateral1);
+        sistem3.acelerador(lateral3);
+        sistem4.acelerador(lateral2);
+        sistem4.acelerador(lateral4);
+
         sistem.actualizar();
         sistem.mostrar(canvas);
 
         sistem2.actualizar();
         sistem2.mostrar(canvas);
+
+        sistem3.actualizar();
+        sistem3.mostrar(canvas);
+        sistem4.actualizar();
+        sistem4.mostrar(canvas);
 
 
     }
