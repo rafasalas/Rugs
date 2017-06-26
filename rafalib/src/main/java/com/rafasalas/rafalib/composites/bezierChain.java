@@ -29,14 +29,15 @@ public class bezierChain {
     boolean esbrowniano;
     float magbrowniano;
     int r,g,b,a;
-    public bezierChain(int width, int height){
+    public bezierChain(int width, int height, float init_mass){
         Random rnd=new Random();
         //nodes=28;
         //radius_link=20;
+        masainicial=0;
         nodes=7;
         radius_link=200;
-       masainicial=(rnd.nextFloat()*3)+1;
-        //masainicial=3;
+       //masainicial=(rnd.nextFloat()*3)+1;
+        if (init_mass!=0) {masainicial=init_mass;}
         origen=new PVector(rnd.nextInt (width),rnd.nextInt (height));
         links=new ArrayList<Mat_point>();
         esbrowniano=true;

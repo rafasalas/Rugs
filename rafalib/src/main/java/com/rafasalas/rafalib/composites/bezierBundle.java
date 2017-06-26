@@ -20,7 +20,7 @@ public class bezierBundle {
     public bezierBundle(int width, int height, int numero){
         mChains=new ArrayList<bezierChain>();
         for (int i=0;i<numero; i++){
-            mChains.add(new bezierChain(width,height));
+            mChains.add(new bezierChain(width,height, (float)i));
         }
     }
     public void acelerador (Atractor atractor){
