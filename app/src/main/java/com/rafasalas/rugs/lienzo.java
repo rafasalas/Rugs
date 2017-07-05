@@ -2,6 +2,11 @@ package com.rafasalas.rugs;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Paint;
+import android.graphics.RadialGradient;
+import android.graphics.Shader;
 
 import com.rafasalas.rafalib.atractors.Atractor;
 import com.rafasalas.rafalib.composites.bezierBundle;
@@ -15,6 +20,7 @@ import processing.core.PVector;
  */
 
 public class lienzo {
+    private Paint paint, fondopaint;
     Atractor hole, lateral1, lateral2, lateral3,lateral4;
     //Mandala mandy;
     PVector centro, part;
@@ -31,6 +37,10 @@ public class lienzo {
         part=new PVector(10,-5);
         centro=new PVector(500, 500);
         dataglobal = (global) context;
+        paint = new Paint();
+        fondopaint=new Paint();
+
+
         intensity=-1;
         /*sistem=new cloud(context, 75);
         sistem.isboxed(width, height);
@@ -64,7 +74,13 @@ public class lienzo {
     public void draw(Canvas canvas, int width, int height) {
 
 
-        canvas.drawColor(0xFF000000);
+        //canvas.drawColor(0xFF000000);
+       // paint.setShader(new LinearGradient(0, 0, 0, height, Color.BLACK, Color.WHITE, Shader.TileMode.MIRROR));
+        //fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 4), 0xff718fc6, 0xff303a64, Shader.TileMode.MIRROR));
+        //fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 4), 0xff555555, 0xff000000, Shader.TileMode.MIRROR));
+        fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 3), 0xff3385c4, 0xff1c496b, Shader.TileMode.MIRROR));
+        canvas.drawPaint(fondopaint);
+
         hole.sentido=-1-dataglobal.getIntensity();;
         lateral1.sentido=-0.5f*dataglobal.getIntensity();
         lateral2.sentido=-0.5f*dataglobal.getIntensity();

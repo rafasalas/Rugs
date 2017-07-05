@@ -76,9 +76,11 @@ public class wallpaper extends WallpaperService {
             if (visible) {
                 Canvas canvas = holder.lockCanvas();
                 canvas.save();
-                int width=canvas.getWidth();
-                int height=canvas.getHeight();
+                //int width=canvas.getWidth();
+               // int height=canvas.getHeight();
                 //aqui su publicidad
+                int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels;
+                int height = getApplicationContext().getResources().getDisplayMetrics().heightPixels;
                 lienzotrabajo.draw(canvas, width, height);
 
                 canvas.restore();
