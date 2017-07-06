@@ -14,7 +14,8 @@ public class global extends Application {
 
     private int r=255,g=255,b=255;*/
 
-
+    private boolean palette=false;
+    private float[] hsv = new float[3];
     private float intensity;
 
 
@@ -35,9 +36,11 @@ public class global extends Application {
     //fin finger
 
 
+    public void set_palette(boolean palette){this.palette=palette;}
+    public boolean get_palette(){return palette;}
 
-
-
+    public void set_color(float[] hsv){this.hsv=hsv;}
+    public float[] get_color(){return hsv;}
 
 
 

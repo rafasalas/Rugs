@@ -46,6 +46,7 @@ public class wallpaper extends WallpaperService {
 
             int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels;
             int height = getApplicationContext().getResources().getDisplayMetrics().heightPixels;
+
             lienzotrabajo=new lienzo(context,width,height);
 
 

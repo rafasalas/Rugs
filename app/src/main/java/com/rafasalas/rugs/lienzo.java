@@ -50,7 +50,12 @@ public class lienzo {
         sistem2=new bezierBundle(width,height,6);
         sistem3=new bezierBundle(width,height,6);
         sistem4=new bezierBundle(width,height,6);
-
+        if (dataglobal.get_palette()){
+            sistem.colorize_palette(dataglobal.get_color());
+            sistem2.colorize_palette(dataglobal.get_color());
+            sistem3.colorize_palette(dataglobal.get_color());
+            sistem4.colorize_palette(dataglobal.get_color());
+        }
 
         hole=new Atractor(1);
         lateral1=new Atractor(1);

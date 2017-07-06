@@ -1,6 +1,7 @@
 package com.rafasalas.rafalib.composites;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 
@@ -117,7 +118,25 @@ public class bezierChain {
             canvas.drawPath(p,paint);
     }
 
+public void colorize_random(){
+                                Random rnd=new Random();
+                                r=rnd.nextInt(255);
+                                g=rnd.nextInt(255);
+                                b=rnd.nextInt(255);
+
+                            }
+public void colorize_palette(float[] hsv){
+                            Random rnd=new Random();
+                            float hcomp;
 
 
+                            if (hsv[0]>180) {hsv[0]=hsv[0]-180;} else {hsv[0]=180-hsv[0];}
+
+                            hsv[2]=rnd.nextFloat()*100;
+                            int outputColor = Color.HSVToColor(hsv);
+                            r=Color.red(outputColor);
+                            g=Color.green(outputColor);
+                            b=Color.blue(outputColor);
+                            }
 
 }
