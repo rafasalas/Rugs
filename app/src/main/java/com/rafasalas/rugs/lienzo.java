@@ -32,6 +32,7 @@ public class lienzo {
     public float intensity;
 
     final global dataglobal;
+    public float[] background_color;
 
     public lienzo(Context context, int width, int height){
         part=new PVector(10,-5);
@@ -55,7 +56,10 @@ public class lienzo {
             sistem2.colorize_palette(dataglobal.get_color());
             sistem3.colorize_palette(dataglobal.get_color());
             sistem4.colorize_palette(dataglobal.get_color());
-        }
+            background_color=dataglobal.get_color();
+        }else {background_color[0]=175;
+                background_color[1]=90;
+                background_color[2]=30;}
 
         hole=new Atractor(1);
         lateral1=new Atractor(1);
@@ -83,7 +87,12 @@ public class lienzo {
        // paint.setShader(new LinearGradient(0, 0, 0, height, Color.BLACK, Color.WHITE, Shader.TileMode.MIRROR));
         //fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 4), 0xff718fc6, 0xff303a64, Shader.TileMode.MIRROR));
         //fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 4), 0xff555555, 0xff000000, Shader.TileMode.MIRROR));
-        fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 3), 0xff3385c4, 0xff1c496b, Shader.TileMode.MIRROR));
+
+        //fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 3), 0xff3385c4, 0xff1c496b, Shader.TileMode.MIRROR));
+
+        fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 3), Color.HSVToColor(background_color),  Color.BLACK, Shader.TileMode.MIRROR));
+
+
         canvas.drawPaint(fondopaint);
 
         hole.sentido=-1-dataglobal.getIntensity();;

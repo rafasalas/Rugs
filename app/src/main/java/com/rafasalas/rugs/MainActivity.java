@@ -36,8 +36,10 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                // get selected radio button from radioGroup
-
+                float[] colornuevo={280,85,50};
+                final global dataglobal = (global) getApplicationContext();
+                dataglobal.set_palette(true);
+                dataglobal.set_color(colornuevo);
                 WallpaperManager wallcachas=WallpaperManager.getInstance(getApplicationContext());
                 try{
 
