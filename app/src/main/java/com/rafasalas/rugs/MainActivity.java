@@ -10,10 +10,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.SeekBar;
 
 
 public class MainActivity extends Activity {
     private Button vamos;
+    private SeekBar hue, saturation, bright=null;
+    private int valH=0, valS=0,valB=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +26,63 @@ public class MainActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activity_main);
+
+        hue=(SeekBar) findViewById(R.id.hue);
+        saturation=(SeekBar) findViewById(R.id.saturation);
+        bright=(SeekBar) findViewById(R.id.bright);
         addlistenerOnButton();
+
+        hue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
+                valH=(progress*360)/100;
+
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        saturation.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
+                valS=progress;
+
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        bright.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
+                valB=progress;
+
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     public void addlistenerOnButton(){
@@ -36,7 +95,10 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                float[] colornuevo={280,85,50};
+                float[] colornuevo=new float[3];
+                colornuevo[0]=valH;
+                colornuevo[1]=valS;
+                colornuevo[2]=valB;
                 final global dataglobal = (global) getApplicationContext();
                 dataglobal.set_palette(true);
                 dataglobal.set_color(colornuevo);
@@ -67,4 +129,7 @@ public class MainActivity extends Activity {
 
         });
     }
+
+
+
 }
