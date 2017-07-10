@@ -7,6 +7,7 @@ import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.RadialGradient;
 import android.graphics.Shader;
+import android.util.Log;
 
 import com.rafasalas.rafalib.atractors.Atractor;
 import com.rafasalas.rafalib.composites.bezierBundle;
@@ -52,11 +53,7 @@ public class lienzo {
         sistem3=new bezierBundle(width,height,6);
         sistem4=new bezierBundle(width,height,6);
         if (dataglobal.get_palette()){
-            sistem.colorize_palette(dataglobal.get_color());
-            sistem2.colorize_palette(dataglobal.get_color());
-            sistem3.colorize_palette(dataglobal.get_color());
-            sistem4.colorize_palette(dataglobal.get_color());
-            background_color=dataglobal.get_color();
+            recolorize();
         }else {background_color[0]=175;
                 background_color[1]=90;
                 background_color[2]=30;}
@@ -89,7 +86,11 @@ public class lienzo {
         //fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 4), 0xff555555, 0xff000000, Shader.TileMode.MIRROR));
 
         //fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 3), 0xff3385c4, 0xff1c496b, Shader.TileMode.MIRROR));
-
+        if (dataglobal.get_modified()){
+            Log.d("cojones  ",dataglobal.get_modified()+"");
+            recolorize();
+            dataglobal.set_modified(false);
+        }
         fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 3), Color.HSVToColor(background_color),  Color.BLACK, Shader.TileMode.MIRROR));
 
 
@@ -139,7 +140,14 @@ public class lienzo {
 
 
     }
+    private void recolorize(){
+        sistem.colorize_palette(dataglobal.get_color());
+        sistem2.colorize_palette(dataglobal.get_color());
+        sistem3.colorize_palette(dataglobal.get_color());
+        sistem4.colorize_palette(dataglobal.get_color());
+        background_color=dataglobal.get_color();
 
+    }
 
 
 }

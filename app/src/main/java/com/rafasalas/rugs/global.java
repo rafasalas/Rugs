@@ -17,6 +17,7 @@ public class global extends Application {
     private boolean palette=false;
     private float[] hsv = new float[3];
     private float intensity;
+    private boolean is_modified=false;
 
 
     /*finger
@@ -42,8 +43,8 @@ public class global extends Application {
     public void set_color(float[] hsv){this.hsv=hsv;}
     public float[] get_color(){return hsv;}
 
-
-
+    public void set_modified(boolean is_modified){this.is_modified=is_modified;}
+    public boolean get_modified(){return is_modified;}
    /* public String gettipo() {
 
         return tipo;

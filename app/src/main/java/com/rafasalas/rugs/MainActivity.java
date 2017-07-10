@@ -1,6 +1,7 @@
 package com.rafasalas.rugs;
 
 import android.app.Activity;
+import android.app.WallpaperInfo;
 import android.app.WallpaperManager;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -17,6 +18,8 @@ public class MainActivity extends Activity {
     private Button vamos;
     private SeekBar hue, saturation, bright=null;
     private int valH=0, valS=0,valB=0;
+
+    private boolean is_Running=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +34,16 @@ public class MainActivity extends Activity {
         saturation=(SeekBar) findViewById(R.id.saturation);
         bright=(SeekBar) findViewById(R.id.bright);
         addlistenerOnButton();
+        WallpaperManager wpm = WallpaperManager.getInstance(this);
+        WallpaperInfo info = wpm.getWallpaperInfo();
 
+        if (info != null && info.getPackageName().equals(this.getPackageName())) {
+            Log.d("chocho ", "We're already running");
+            is_Running=true;
+        } else {
+            Log.d("chocho ", "We're not running");
+            is_Running=false;
+        }
         hue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
                 valH=(progress*360)/100;
@@ -102,27 +114,29 @@ public class MainActivity extends Activity {
                 final global dataglobal = (global) getApplicationContext();
                 dataglobal.set_palette(true);
                 dataglobal.set_color(colornuevo);
-                WallpaperManager wallcachas=WallpaperManager.getInstance(getApplicationContext());
-                try{
+
+                if (is_Running){
+                    dataglobal.set_modified(true);
+                } else {
+                    WallpaperManager wallcachas = WallpaperManager.getInstance(getApplicationContext());
+                    try {
 
 
+                        Intent intent = new Intent(wallcachas.ACTION_CHANGE_LIVE_WALLPAPER);
 
-                    Intent intent = new Intent(wallcachas.ACTION_CHANGE_LIVE_WALLPAPER);
+                        intent.putExtra(wallcachas.EXTRA_LIVE_WALLPAPER_COMPONENT,
+                                new ComponentName(MainActivity.this, wallpaper.class));
+                        //stopService(intent);
+                        startActivity(intent);
+                        finish();
+                    } catch (Exception e) {
 
-                    intent.putExtra(wallcachas.EXTRA_LIVE_WALLPAPER_COMPONENT,
-                            new ComponentName(MainActivity.this, wallpaper.class));
-                    //stopService(intent);
-                    startActivity(intent);
-                    finish();
+                        Intent intent = new Intent();
+                        intent.setAction(wallcachas.ACTION_LIVE_WALLPAPER_CHOOSER);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
-                catch(Exception e){
-
-                    Intent intent = new Intent();
-                    intent.setAction(wallcachas.ACTION_LIVE_WALLPAPER_CHOOSER);
-                    startActivity(intent);
-                    finish();
-                }
-
 
 
             }
