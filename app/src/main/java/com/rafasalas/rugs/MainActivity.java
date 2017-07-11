@@ -38,11 +38,13 @@ public class MainActivity extends Activity {
         WallpaperInfo info = wpm.getWallpaperInfo();
 
         if (info != null && info.getPackageName().equals(this.getPackageName())) {
-            Log.d("chocho ", "We're already running");
+            //Log.d("chocho ", "We're already running");
             is_Running=true;
+            vamos.setText("Modify");
         } else {
-            Log.d("chocho ", "We're not running");
+            //Log.d("chocho ", "We're not running");
             is_Running=false;
+            vamos.setText("Go!");
         }
         hue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
@@ -117,6 +119,7 @@ public class MainActivity extends Activity {
 
                 if (is_Running){
                     dataglobal.set_modified(true);
+                    finish();
                 } else {
                     WallpaperManager wallcachas = WallpaperManager.getInstance(getApplicationContext());
                     try {

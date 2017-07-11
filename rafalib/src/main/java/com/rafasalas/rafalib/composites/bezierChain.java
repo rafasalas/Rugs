@@ -131,12 +131,16 @@ public void colorize_palette(float[] hsv){
                             float[] chocho={0,0,0};
                             float hcomp=0;
 
-    Log.d("hsv_antes", Float.toString(hsv[0]));
+   // Log.d("hsv_antes", Float.toString(hsv[0]));
                             if (hsv[0]>180) {hcomp=hsv[0]-180;} else {hcomp=180+hsv[0];}
-    Log.d("hsv_despues", Float.toString(hsv[0]));
+    //Log.d("hsv_despues", Float.toString(hsv[0]));
+
+
+
                             chocho[0]=hcomp;
                             chocho[1]=hsv[1];
                             chocho[2]=rnd.nextFloat()*100;
+                            Log.d("brillo", chocho[2]+" ");
                             int outputColor = Color.HSVToColor(chocho);
                             r=Color.red(outputColor);
                             g=Color.green(outputColor);
