@@ -51,7 +51,7 @@ public class bezierChain {
            // if (i==0){velocidadinicial=new PVector (rnd.nextFloat ()*5,rnd.nextFloat ()*5);} else {velocidadinicial=new PVector (0,0);}
             velocidadinicial=new PVector ((rnd.nextFloat ()*5)+5,(rnd.nextFloat ()*5)+5);
             //masses[i]=masaparticula*((random(10,100))*0.01);
-            masses[i]=masainicial*((i+1));
+            masses[i]=masainicial*((i+2));
             r=rnd.nextInt(255);
             g=rnd.nextInt(255);
             b=rnd.nextInt(255);
@@ -60,7 +60,7 @@ public class bezierChain {
 
 
             links.get(i).eterna=true;
-            links.get(i).limite=10;
+            links.get(i).limite=15;
             links.get(i).boxed(true, width, height);
             links.get(i).velocidad=velocidadinicial;
 

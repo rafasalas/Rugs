@@ -34,7 +34,7 @@ public class lienzo {
 
     final global dataglobal;
     public float[] background_color;
-
+    public float[] endgradient;
     public lienzo(Context context, int width, int height){
         part=new PVector(10,-5);
         centro=new PVector(500, 500);
@@ -91,7 +91,8 @@ public class lienzo {
             recolorize();
             dataglobal.set_modified(false);
         }
-        fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 3), Color.HSVToColor(background_color),  Color.BLACK, Shader.TileMode.MIRROR));
+       // fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 3), Color.HSVToColor(background_color), Color.HSVToColor(endgradient), Shader.TileMode.MIRROR));
+        fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 3), Color.HSVToColor(background_color), Color.BLACK, Shader.TileMode.MIRROR));
 
 
         canvas.drawPaint(fondopaint);
@@ -141,12 +142,19 @@ public class lienzo {
 
     }
     private void recolorize(){
+        float end;
+
         sistem.colorize_palette(dataglobal.get_color());
         sistem2.colorize_palette(dataglobal.get_color());
         sistem3.colorize_palette(dataglobal.get_color());
         sistem4.colorize_palette(dataglobal.get_color());
         background_color=dataglobal.get_color();
-
+        //endgradient=dataglobal.get_color();
+        //endgradient[2]=25;
+        endgradient=dataglobal.get_color();
+        end=endgradient[2]-80;
+        if (end<0){end=endgradient[2]+80;}
+        endgradient[2]=end;
     }
 
 
