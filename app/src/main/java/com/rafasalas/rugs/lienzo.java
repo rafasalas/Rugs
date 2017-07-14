@@ -33,7 +33,7 @@ public class lienzo {
     bezierBundle sistem3, sistem4;
 
     public float intensity;
-
+    public float F,f;
     final global dataglobal;
     public float[] background_color;
     public float[] endgradient;
@@ -53,6 +53,8 @@ public class lienzo {
         limite_contador=600;
 
         intensity=-1;
+        F=1;
+        f=0.5f;
         /*sistem=new cloud(context, 75);
         sistem.isboxed(width, height);
         sistem2=new cloud(context, 75);
@@ -97,6 +99,8 @@ public class lienzo {
             sistem2.remasses();
             sistem3.remasses();
             sistem4.remasses();
+            F=1+((rnd.nextFloat()*0.4f)-0.2f);
+            f=0.5f+((rnd.nextFloat()*0.2f)-0.1f);
 
         }
         //canvas.drawColor(0xFF000000);
@@ -116,11 +120,11 @@ public class lienzo {
 
         canvas.drawPaint(fondopaint);
 
-        hole.sentido=-1-dataglobal.getIntensity();;
-        lateral1.sentido=-0.5f*dataglobal.getIntensity();
-        lateral2.sentido=-0.5f*dataglobal.getIntensity();
-        lateral3.sentido=-0.5f*dataglobal.getIntensity();
-        lateral4.sentido=-0.5f*dataglobal.getIntensity();
+        hole.sentido=-F-dataglobal.getIntensity();;
+        lateral1.sentido=-f*dataglobal.getIntensity();
+        lateral2.sentido=-f*dataglobal.getIntensity();
+        lateral3.sentido=-f*dataglobal.getIntensity();
+        lateral4.sentido=-f*dataglobal.getIntensity();
         /*sistem.acelera_particulas(hole);
         sistem2.acelera_particulas(hole);
         sistem.acelera_particulas(lateral1);
@@ -162,6 +166,7 @@ public class lienzo {
     }
     private void recolorize(){
         //float end;
+        Random rnd=new Random();
         float calasparra[]=dataglobal.get_color();
         sistem.colorize_palette(calasparra);
         sistem2.colorize_palette(calasparra);
@@ -172,6 +177,8 @@ public class lienzo {
         sistem2.remasses();
         sistem3.remasses();
         sistem4.remasses();
+        F=1+((rnd.nextFloat()*0.4f)-0.2f);
+        f=0.5f+((rnd.nextFloat()*0.2f)-0.1f);
         //endgradient=dataglobal.get_color();
         //endgradient[2]=25;
         /*endgradient=dataglobal.get_color();
