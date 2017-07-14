@@ -22,6 +22,7 @@ import processing.core.PVector;
 public class bezierChain {
     int nodes, radius_link;
     float masainicial;
+    float mass_increment;
     ArrayList<Mat_point> links;
     float[] masses;
     PVector velocidadinicial;
@@ -38,6 +39,7 @@ public class bezierChain {
         masainicial=0;
         nodes=7;
         radius_link=200;
+        mass_increment=1;
        //masainicial=(rnd.nextFloat()*3)+1;
         if (init_mass!=0) {masainicial=init_mass;}
         origen=new PVector(rnd.nextInt (width),rnd.nextInt (height));
@@ -51,7 +53,7 @@ public class bezierChain {
            // if (i==0){velocidadinicial=new PVector (rnd.nextFloat ()*5,rnd.nextFloat ()*5);} else {velocidadinicial=new PVector (0,0);}
             velocidadinicial=new PVector ((rnd.nextFloat ()*5)+5,(rnd.nextFloat ()*5)+5);
             //masses[i]=masaparticula*((random(10,100))*0.01);
-            masses[i]=masainicial*((i+2));
+            masses[i]=masainicial*((i+mass_increment));
             r=rnd.nextInt(255);
             g=rnd.nextInt(255);
             b=rnd.nextInt(255);
@@ -147,5 +149,7 @@ public void colorize_palette(float[] hsv){
                             g=Color.green(outputColor);
                             b=Color.blue(outputColor);
                             }
+
+
 
 }

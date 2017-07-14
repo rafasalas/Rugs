@@ -59,6 +59,14 @@ public class bezierBundle {
             p.colorize_palette(hsv);
         }
     }
+    public void remasses(){
+        Random rnd=new Random();
+        for (int i = 0; i < mChains.size(); i++) {
+            bezierChain p = mChains.get(i);
+            p.mass_increment=(rnd.nextFloat()*2)+0.5f;
+
+        }
+    }
 
 
 }

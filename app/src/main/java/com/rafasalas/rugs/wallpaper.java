@@ -8,6 +8,8 @@ import android.service.wallpaper.WallpaperService;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
+import java.util.Random;
+
 /**
  * Created by salas on 15/06/2017.
  */
@@ -46,7 +48,6 @@ public class wallpaper extends WallpaperService {
 
             int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels;
             int height = getApplicationContext().getResources().getDisplayMetrics().heightPixels;
-
             lienzotrabajo=new lienzo(context,width,height);
 
 
@@ -79,6 +80,12 @@ public class wallpaper extends WallpaperService {
                 canvas.save();
                 //int width=canvas.getWidth();
                // int height=canvas.getHeight();
+
+
+
+
+
+
                 //aqui su publicidad
                 int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels;
                 int height = getApplicationContext().getResources().getDisplayMetrics().heightPixels;

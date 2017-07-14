@@ -14,6 +14,8 @@ import com.rafasalas.rafalib.composites.bezierBundle;
 import com.rafasalas.rafalib.composites.cloud;
 import com.rafasalas.rafalib.composites.sistema;
 
+import java.util.Random;
+
 import processing.core.PVector;
 
 /**
@@ -35,13 +37,20 @@ public class lienzo {
     final global dataglobal;
     public float[] background_color;
     public float[] endgradient;
+
+    private float contador, limite_contador;
+
+
+
+
     public lienzo(Context context, int width, int height){
         part=new PVector(10,-5);
         centro=new PVector(500, 500);
         dataglobal = (global) context;
         paint = new Paint();
         fondopaint=new Paint();
-
+        contador=0;
+        limite_contador=600;
 
         intensity=-1;
         /*sistem=new cloud(context, 75);
@@ -78,8 +87,18 @@ public class lienzo {
 
 
     public void draw(Canvas canvas, int width, int height) {
+        Random rnd=new Random();
+        //TEMPORIZADOR DE DISPARO
+        contador++;
+        if (contador>limite_contador){
+            contador=0;
+            limite_contador=(rnd.nextFloat()*450)+150;
+            sistem.remasses();
+            sistem2.remasses();
+            sistem3.remasses();
+            sistem4.remasses();
 
-
+        }
         //canvas.drawColor(0xFF000000);
        // paint.setShader(new LinearGradient(0, 0, 0, height, Color.BLACK, Color.WHITE, Shader.TileMode.MIRROR));
         //fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 4), 0xff718fc6, 0xff303a64, Shader.TileMode.MIRROR));
@@ -142,19 +161,23 @@ public class lienzo {
 
     }
     private void recolorize(){
-        float end;
-
-        sistem.colorize_palette(dataglobal.get_color());
-        sistem2.colorize_palette(dataglobal.get_color());
-        sistem3.colorize_palette(dataglobal.get_color());
-        sistem4.colorize_palette(dataglobal.get_color());
-        background_color=dataglobal.get_color();
+        //float end;
+        float calasparra[]=dataglobal.get_color();
+        sistem.colorize_palette(calasparra);
+        sistem2.colorize_palette(calasparra);
+        sistem3.colorize_palette(calasparra);
+        sistem4.colorize_palette(calasparra);
+        background_color=calasparra;
+        sistem.remasses();
+        sistem2.remasses();
+        sistem3.remasses();
+        sistem4.remasses();
         //endgradient=dataglobal.get_color();
         //endgradient[2]=25;
-        endgradient=dataglobal.get_color();
+        /*endgradient=dataglobal.get_color();
         end=endgradient[2]-80;
         if (end<0){end=endgradient[2]+80;}
-        endgradient[2]=end;
+        endgradient[2]=end;*/
     }
 
 
