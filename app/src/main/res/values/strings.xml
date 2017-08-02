@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Rugs</string>
+    <string name="app_name" translatable="false">Rugs</string>
+
+    <string name="pref_hue_key" translatable="false">hue</string>
+    <string name="pref_saturation_key" translatable="false">saturation</string>
+    <string name="pref_bright_key" translatable="false">bright</string>
+    <string name="pref_init_key" translatable="false">initialized</string>
+
+
 </resources>
