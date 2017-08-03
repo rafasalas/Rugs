@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.WallpaperInfo;
 import android.app.WallpaperManager;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -27,14 +28,25 @@ public class MainActivity extends Activity {
     private int valH=0, valS=0,valB=0;
 
     private boolean is_Running=false;
-    public SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-    public  String initializedKey=this.getString(R.string.pref_init_key);;
-    public  String hueKey=this.getString(R.string.pref_hue_key);
-    public  String satKey=this.getString(R.string.pref_saturation_key);;
-    public  String brightKey=this.getString(R.string.pref_bright_key);;
+  // public SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+  public SharedPreferences prefs;
+    public  String initializedKey;
+    public  String hueKey;
+    public  String satKey;
+    public  String brightKey;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+     // prefs=this.getPreferences(Context.MODE_PRIVATE);
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        initializedKey=this.getString(R.string.pref_init_key);
+        hueKey=this.getString(R.string.pref_hue_key);
+        satKey=this.getString(R.string.pref_saturation_key);
+       brightKey=this.getString(R.string.pref_bright_key);
+
+
+
         // Set portrait orientation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // Hide title bar
@@ -49,7 +61,7 @@ public class MainActivity extends Activity {
         WallpaperManager wpm = WallpaperManager.getInstance(this);
         WallpaperInfo info = wpm.getWallpaperInfo();
         //
-
+        Log.d("valores", prefs.getInt(hueKey, 0)+" "+prefs.getInt(satKey, 0)+" "+prefs.getInt(brightKey, 0));
         if (!prefs.contains(initializedKey)){
 
             hue.setProgress(50);
@@ -61,7 +73,15 @@ public class MainActivity extends Activity {
             valB=50;
         } else
         {
-          //valH=prefs.getIn
+            valH=prefs.getInt(hueKey, 0);
+            //double ladilla=(((double)valH/360)*100);
+           // Log.d("valor ladilla", ((double)valH/360d)+"");
+            hue.setProgress((int)(((double)valH/360)*100));
+            valS=prefs.getInt(satKey, 0);
+            saturation.setProgress(valS);
+            valB=prefs.getInt(brightKey, 0);
+            bright.setProgress(valB);
+            Log.d("valores_obtenidos", valH+" "+valS+" "+valB);
         }
         //
         if (info != null && info.getPackageName().equals(this.getPackageName())) {
@@ -151,7 +171,7 @@ public class MainActivity extends Activity {
                 final global dataglobal = (global) getApplicationContext();
                 dataglobal.set_palette(true);
                 dataglobal.set_color(colornuevo);
-                PrefsUtils.SetPrefs(getApplicationContext(),valH,valS,valB);
+                PrefsUtils.SetColors(getApplicationContext(),valH,valS,valB);
 
                 if (is_Running){
                     dataglobal.set_modified(true);
