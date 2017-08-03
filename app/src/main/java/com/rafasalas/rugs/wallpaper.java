@@ -112,7 +112,7 @@ public class wallpaper extends WallpaperService {
         @Override
         public void onSurfaceChanged(SurfaceHolder holder, int format, int width, int height) {
             super.onSurfaceChanged(holder, format, width, height);
-
+            lienzotrabajo.construction(width, height);
         }
 
 

@@ -59,7 +59,7 @@ public class lienzo {
         sistem.isboxed(width, height);
         sistem2=new cloud(context, 75);
         sistem2.isboxed(width, height);*/
-        sistem=new bezierBundle(width,height,6);
+       /* sistem=new bezierBundle(width,height,6);
         sistem2=new bezierBundle(width,height,6);
         sistem3=new bezierBundle(width,height,6);
         sistem4=new bezierBundle(width,height,6);
@@ -81,9 +81,9 @@ public class lienzo {
         lateral1.posicion=new PVector(width/2, height/8);
         lateral2.posicion=new PVector(width/8, height/2);
         lateral3.posicion=new PVector(7*(width/8), height/2);
-        lateral4.posicion=new PVector((width/2), 7*(height/8));
+        lateral4.posicion=new PVector((width/2), 7*(height/8));*/
 
-
+        construction(width,height);
 
     }
 
@@ -186,6 +186,30 @@ public class lienzo {
         if (end<0){end=endgradient[2]+80;}
         endgradient[2]=end;*/
     }
+public void construction(int width, int height){
+    sistem=new bezierBundle(width,height,6);
+    sistem2=new bezierBundle(width,height,6);
+    sistem3=new bezierBundle(width,height,6);
+    sistem4=new bezierBundle(width,height,6);
+    if (dataglobal.get_palette()){
+        recolorize();
+    }else {background_color[0]=175;
+        background_color[1]=90;
+        background_color[2]=30;}
 
+    hole=new Atractor(1);
+    lateral1=new Atractor(1);
+    lateral2=new Atractor(1);
+    lateral3=new Atractor(1);
+    lateral4=new Atractor(1);
+    hole.sentido=-(float)1;
+
+    hole.posicion.x=width/2;
+    hole.posicion.y=height/2;
+    lateral1.posicion=new PVector(width/2, height/8);
+    lateral2.posicion=new PVector(width/8, height/2);
+    lateral3.posicion=new PVector(7*(width/8), height/2);
+    lateral4.posicion=new PVector((width/2), 7*(height/8));
+            }
 
 }

@@ -23,7 +23,7 @@ public class PrefsUtils {
         String hueKey=context.getString(R.string.pref_hue_key);
         String  satKey=context.getString(R.string.pref_saturation_key);;
         String brightKey=context.getString(R.string.pref_bright_key);;
-       String initializedKey=context.getString(R.string.pref_init_key);
+        String initializedKey=context.getString(R.string.pref_init_key);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
