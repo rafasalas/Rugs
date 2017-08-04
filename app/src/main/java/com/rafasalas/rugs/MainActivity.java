@@ -20,12 +20,14 @@ import android.widget.Button;
 import android.widget.SeekBar;
 
 import com.rafasalas.rugs.data.PrefsUtils;
+import com.rafasalas.rugs.views.muestracolor;
 
 
 public class MainActivity extends Activity {
+    private muestracolor muestra;
     private Button vamos;
     private SeekBar hue, saturation, bright=null;
-    private int valH=0, valS=0,valB=0;
+    private float valH=0, valS=0,valB=0;
 
     private boolean is_Running=false;
   // public SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
@@ -53,7 +55,7 @@ public class MainActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activity_main);
-
+        muestra=(muestracolor)findViewById(R.id.muestra);
         hue=(SeekBar) findViewById(R.id.hue);
         saturation=(SeekBar) findViewById(R.id.saturation);
         bright=(SeekBar) findViewById(R.id.bright);
@@ -61,28 +63,30 @@ public class MainActivity extends Activity {
         WallpaperManager wpm = WallpaperManager.getInstance(this);
         WallpaperInfo info = wpm.getWallpaperInfo();
         //
-        Log.d("valores", prefs.getInt(hueKey, 0)+" "+prefs.getInt(satKey, 0)+" "+prefs.getInt(brightKey, 0));
+        //Log.d("valores", prefs.getInt(hueKey, 0)+" "+prefs.getInt(satKey, 0)+" "+prefs.getInt(brightKey, 0));
         if (!prefs.contains(initializedKey)){
 
             hue.setProgress(50);
             valH=180;
             saturation.setProgress(50);
-            valS=50;
+            valS=0.5f;
 
             bright.setProgress(50);
-            valB=50;
+            valB=0.5f;
         } else
         {
-            valH=prefs.getInt(hueKey, 0);
-            //double ladilla=(((double)valH/360)*100);
-           // Log.d("valor ladilla", ((double)valH/360d)+"");
+            valH=prefs.getFloat(hueKey, 0);
+
             hue.setProgress((int)(((double)valH/360)*100));
-            valS=prefs.getInt(satKey, 0);
-            saturation.setProgress(valS);
-            valB=prefs.getInt(brightKey, 0);
-            bright.setProgress(valB);
-            Log.d("valores_obtenidos", valH+" "+valS+" "+valB);
+            valS=prefs.getFloat(satKey, 0);
+            saturation.setProgress((int)(valS*100));
+            valB=prefs.getFloat(brightKey, 0);
+            bright.setProgress((int)(valB*100));
+            //Log.d("valores_obtenidos", valH+" "+valS+" "+valB);
         }
+        muestra.hsv[0]=valH;
+        muestra.hsv[1]=valS;
+        muestra.hsv[2]=valB;
         //
         if (info != null && info.getPackageName().equals(this.getPackageName())) {
             //Log.d("chocho ", "We're already running");
@@ -104,6 +108,7 @@ public class MainActivity extends Activity {
         hue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
                 valH=(progress*360)/100;
+                muestra.hsv[0]=valH;
 
 
             }
@@ -120,7 +125,9 @@ public class MainActivity extends Activity {
         });
         saturation.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
-                valS=progress;
+                valS=(float)progress/100;
+
+                muestra.hsv[1]=valS;
 
 
             }
@@ -137,8 +144,9 @@ public class MainActivity extends Activity {
         });
         bright.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
-                valB=progress;
+                valB=(float)progress/100;
 
+                muestra.hsv[2]=valB;
 
             }
 

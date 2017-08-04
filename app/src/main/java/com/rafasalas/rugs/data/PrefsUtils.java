@@ -19,7 +19,7 @@ public class PrefsUtils {
   public  static SharedPreferences prefs;*/
 
 
-    public static  void SetColors(Context context,int h, int s, int v){
+    public static  void SetColors(Context context,float h, float s, float v){
         String hueKey=context.getString(R.string.pref_hue_key);
         String  satKey=context.getString(R.string.pref_saturation_key);;
         String brightKey=context.getString(R.string.pref_bright_key);;
@@ -28,11 +28,11 @@ public class PrefsUtils {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
         SharedPreferences.Editor editor=prefs.edit();
-        Log.d("valores_set", h+" "+s+" "+v);
-        Log.d("valores_string", hueKey+" "+satKey+" "+brightKey);
-        editor.putInt(hueKey,h);
-        editor.putInt(satKey,s);
-        editor.putInt(brightKey,v);
+        //Log.d("valores_set", h+" "+s+" "+v);
+        //Log.d("valores_string", hueKey+" "+satKey+" "+brightKey);
+        editor.putFloat(hueKey,h);
+        editor.putFloat(satKey,s);
+        editor.putFloat(brightKey,v);
         editor.putBoolean(initializedKey, true);
         editor.apply();
         editor.commit();
