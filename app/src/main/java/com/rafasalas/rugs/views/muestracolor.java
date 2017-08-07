@@ -7,6 +7,8 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.rafasalas.rafalib.vectorgraph.vectordraw;
+
 import java.util.Random;
 
 /**
@@ -18,12 +20,14 @@ public class muestracolor extends View {
 
 
    public float[] hsv = new float[3];
-
+    vectordraw muestra_1;
     public muestracolor(Context context, AttributeSet atributos) {
 
 
         super(context, atributos);
-
+        muestra_1=new vectordraw(context);
+        muestra_1.loadsvg("muestra_1","drawable","com.rafasalas.rugs";
+        //muestra_1.resize(width, h);
         hsv[0]=hsv[1]=hsv[2]=0;
         Random rnd=new Random();
 
