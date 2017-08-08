@@ -144,7 +144,7 @@ public class vectordraw {
 
         chocho[0]=hcomp;
         chocho[1]=hsv[1];
-        chocho[2]=rnd.nextFloat()*100;
+        chocho[2]=rnd.nextFloat();
         //Log.d("brillo", chocho[2]+" ");
         int outputColor = Color.HSVToColor(chocho);
         int r=Color.red(outputColor);

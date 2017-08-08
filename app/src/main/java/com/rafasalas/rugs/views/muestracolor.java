@@ -11,6 +11,9 @@ import com.rafasalas.rafalib.vectorgraph.vectordraw;
 
 import java.util.Random;
 
+import static android.R.attr.height;
+import static android.R.attr.width;
+
 /**
  * Created by salas on 04/08/2017.
  */
@@ -26,8 +29,8 @@ public class muestracolor extends View {
 
         super(context, atributos);
         muestra_1=new vectordraw(context);
-        muestra_1.loadsvg("muestra_1","drawable","com.rafasalas.rugs";
-        //muestra_1.resize(width, h);
+        muestra_1.loadsvg("muestra_1","drawable","com.rafasalas.rugs");
+
         hsv[0]=hsv[1]=hsv[2]=0;
         Random rnd=new Random();
 
@@ -42,10 +45,11 @@ public class muestracolor extends View {
 
         float width=canvas.getWidth();
         float height=canvas.getHeight();
-
+        muestra_1.resize((int)width, (int)height, .5);
         canvas.drawARGB(255, Color.red(Color.HSVToColor(hsv)),Color.green(Color.HSVToColor(hsv)),Color.blue(Color.HSVToColor(hsv)));
-
-        paint.setStrokeWidth(3);
+        muestra_1.colorize_palette(255,hsv);
+        //paint.setStrokeWidth(3);
+        muestra_1.dibujar(canvas);
         //paint.setARGB(255, rojo, verde, azul);
 
 
