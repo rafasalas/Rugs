@@ -139,7 +139,8 @@ public class vectordraw {
         int g=Color.green(outputColor);
         int b=Color.blue(outputColor);
         //drawable.setColorFilter(color.argb(opacity, r, g, b), PorterDuff.Mode.MULTIPLY);
-        drawable.setColorFilter(color.argb(opacity, r, g, b), PorterDuff.Mode.SRC_ATOP);
+        drawable.setColorFilter(color.argb(255, r, g, b), PorterDuff.Mode.SRC_ATOP);
+        drawable.setAlpha(opacity);
     }
 
 }

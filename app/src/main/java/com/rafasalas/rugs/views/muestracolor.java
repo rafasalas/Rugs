@@ -24,14 +24,15 @@ public class muestracolor extends View {
 
    public float[] hsv = new float[3];
     public float[] hsv_1 = new float[3];
-    vectordraw muestra_1;
+    vectordraw muestra_1, muestra_2;
     public muestracolor(Context context, AttributeSet atributos) {
 
 
         super(context, atributos);
         muestra_1=new vectordraw(context);
         muestra_1.loadsvg("muestra_1","drawable","com.rafasalas.rugs");
-
+        muestra_2=new vectordraw(context);
+        muestra_2.loadsvg("muestra_2","drawable","com.rafasalas.rugs");
         hsv[0]=hsv[1]=hsv[2]=0;
 
         hsv_1[0]=hsv_1[1]=hsv_1[2]=0;
@@ -50,11 +51,15 @@ public class muestracolor extends View {
 
         float width=canvas.getWidth();
         float height=canvas.getHeight();
-        muestra_1.resize((int)width, (int)height, .5);
+        muestra_1.resize((int)width, (int)height, 1);
+        muestra_2.resize((int)width, (int)height, 1);
         canvas.drawARGB(255, Color.red(Color.HSVToColor(hsv)),Color.green(Color.HSVToColor(hsv)),Color.blue(Color.HSVToColor(hsv)));
-        muestra_1.colorize(255,cal_comp(45f,hsv));
+        muestra_1.colorize(200,cal_comp(1f,hsv));
         //paint.setStrokeWidth(3);
         muestra_1.dibujar(canvas);
+        muestra_2.colorize(100,cal_comp(45f,hsv));
+        //paint.setStrokeWidth(3);
+        muestra_2.dibujar(canvas);
         //paint.setARGB(255, rojo, verde, azul);
 
 
