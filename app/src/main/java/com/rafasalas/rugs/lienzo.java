@@ -115,7 +115,7 @@ public class lienzo {
             dataglobal.set_modified(false);
         }
        // fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 3), Color.HSVToColor(background_color), Color.HSVToColor(endgradient), Shader.TileMode.MIRROR));
-        fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 3), Color.HSVToColor(background_color), Color.BLACK, Shader.TileMode.MIRROR));
+        fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 5), Color.HSVToColor(background_color), Color.BLACK, Shader.TileMode.MIRROR));
 
 
         canvas.drawPaint(fondopaint);

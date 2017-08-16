@@ -39,7 +39,10 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        // Set portrait orientation
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        // Hide title bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
      // prefs=this.getPreferences(Context.MODE_PRIVATE);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         initializedKey=this.getString(R.string.pref_init_key);

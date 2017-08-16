@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RadialGradient;
+import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -56,7 +58,10 @@ public class muestracolor extends View {
         muestra_1.resize((int)width, (int)height, 1);
         muestra_2.resize((int)width, (int)height, 1);
         muestra_3.resize((int)width, (int)height, 1);
-        canvas.drawARGB(255, Color.red(Color.HSVToColor(hsv)),Color.green(Color.HSVToColor(hsv)),Color.blue(Color.HSVToColor(hsv)));
+        //canvas.drawARGB(255, Color.red(Color.HSVToColor(hsv)),Color.green(Color.HSVToColor(hsv)),Color.blue(Color.HSVToColor(hsv)));
+        paint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 2.7f), Color.HSVToColor(hsv), Color.BLACK, Shader.TileMode.MIRROR));
+        canvas.drawPaint(paint);
+
         muestra_1.colorize(255,cal_comp(1f,hsv));
         //paint.setStrokeWidth(3);
         muestra_1.dibujar(canvas);
