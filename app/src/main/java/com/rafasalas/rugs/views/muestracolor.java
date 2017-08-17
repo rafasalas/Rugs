@@ -62,10 +62,10 @@ public class muestracolor extends View {
         paint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 2.7f), Color.HSVToColor(hsv), Color.BLACK, Shader.TileMode.MIRROR));
         canvas.drawPaint(paint);
 
-        muestra_1.colorize(255,cal_comp(1f,hsv));
+        muestra_1.colorize(255,cal_comp(-45f,hsv));
         //paint.setStrokeWidth(3);
         muestra_1.dibujar(canvas);
-        muestra_2.colorize(150,cal_comp(22f,hsv));
+        muestra_2.colorize(150,cal_comp(1f,hsv));
         //paint.setStrokeWidth(3);
         muestra_2.dibujar(canvas);
         muestra_3.colorize(150,cal_comp(45f,hsv));
