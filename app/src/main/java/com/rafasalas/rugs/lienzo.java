@@ -114,7 +114,7 @@ public class lienzo {
             recolorize();
             dataglobal.set_modified(false);
         }
-
+        
 
 
 
