@@ -111,8 +111,20 @@ public class wallpaper extends WallpaperService {
         }
         @Override
         public void onSurfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+            // trying fixing error of black screen
+            if (width>height){
+                int temp=width;
+                width=height;
+                height=temp;
+            }
+
+
+
             super.onSurfaceChanged(holder, format, width, height);
             lienzotrabajo.construction(width, height);
+
+
+
         }
 
 

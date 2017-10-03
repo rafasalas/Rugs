@@ -109,6 +109,13 @@ public class lienzo {
         //fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 4), 0xff555555, 0xff000000, Shader.TileMode.MIRROR));
 
         //fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 3), 0xff3385c4, 0xff1c496b, Shader.TileMode.MIRROR));
+
+
+
+
+
+
+
         if (dataglobal.get_modified()){
             //Log.d("cojones  ",dataglobal.get_modified()+"");
             recolorize();
