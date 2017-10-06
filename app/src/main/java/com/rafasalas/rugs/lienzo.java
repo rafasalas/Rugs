@@ -55,6 +55,7 @@ public class lienzo {
         intensity=-1;
         F=1;
         f=0.5f;
+        background_color=new float[3];
         /*sistem=new cloud(context, 75);
         sistem.isboxed(width, height);
         sistem2=new cloud(context, 75);

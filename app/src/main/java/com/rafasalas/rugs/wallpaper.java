@@ -89,6 +89,9 @@ public class wallpaper extends WallpaperService {
                 //aqui su publicidad
                 int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels;
                 int height = getApplicationContext().getResources().getDisplayMetrics().heightPixels;
+                // trying fixing error of black screen
+
+
                 lienzotrabajo.draw(canvas, width, height);
 
                 canvas.restore();
@@ -112,11 +115,6 @@ public class wallpaper extends WallpaperService {
         @Override
         public void onSurfaceChanged(SurfaceHolder holder, int format, int width, int height) {
             // trying fixing error of black screen
-            if (width>height){
-                int temp=width;
-                width=height;
-                height=temp;
-            }
 
 
 
